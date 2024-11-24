@@ -36,13 +36,10 @@ jobs:
             name: Mocha-Test-Result
             path: test-results.xml
     code-coverage:
-        name:  Code Coverage
         runs-on: ubuntu-latest
         steps:
-        - name: Checkout Repository
-          uses: actions/checkout@v4
-        - name: Setup NodeJS
-          uses: actions/setup-node
+        - uses: actions/checkout@v4
+        - uses: actions/setup-node@v4
             with:
               node-version: 18
         - run: npm install
