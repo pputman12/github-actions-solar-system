@@ -57,8 +57,7 @@
         - uses: azure/setup-kubectl@v3
           with:
             version: v1.26.0
-
-        - uses: azure/k8s-set-context
+        - uses: azure/k8s-set-context@v3
           with:
             method: kubeconfig
             kubeconfig: '${{ secrets.KUBECONFIG }}'
