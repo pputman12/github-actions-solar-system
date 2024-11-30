@@ -46,3 +46,22 @@
             path: coverage
             retention-days: 5
            
+    dev-deploy:
+      name: Dev Deploy
+      runs-on: ubuntu-latest
+      needs: docker
+      environment:
+        name: development
+      steps:
+        - uses: actions/checkout@v4
+        - uses: azure/setup-kubectl@v3
+          with:
+            version: v1.26.0
+
+        - uses: azure/k8s-set-context
+          with:
+            method: kubeconfig
+            kubeconfig: '${{ secrets.KUBECONFIG }}'
+        - run: kubectl version --short -o yaml
+            
+
